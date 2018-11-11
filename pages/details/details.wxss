@@ -1,0 +1,69 @@
+/* details.wxss */
+.title{
+  display: flex;
+  margin:10px 30px 0 30px;
+}
+.title text{
+  display: flex;
+  height: 30px;
+  width:50%;
+  justify-content: center;
+  align-items: center;
+  border:solid 1px #d4f1f7;
+}
+.white{
+  background-color:#d4f1f7;
+  color:#24a6c1;
+}
+.grey{
+  color:	 #145c6b;
+}
+
+.tips{
+  font-size:12px;
+  color:#22AFCB;
+  padding:5px 0 10px 10px;
+}
+
+.inform{
+  padding:10px;
+  font-size:15px;
+}
+.loanTotal,
+.payInterest,
+.totalToPay,
+.rates,
+.eachMonthPay,
+.firstMonth{
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.loanTotal view:first-child,
+.payInterest view:first-child,
+.totalToPay view:first-child,
+.rates view:first-child,
+.eachMonthPay view:first-child,
+.firstMonth view:first-child{
+  width: 100px;
+}
+.loanTotal view:last-child,
+.payInterest view:last-child,
+.totalToPay view:last-child,
+.rates view:last-child,
+.eachMonthPay view:last-child,
+.firstMonth view:last-child{
+  display: flex;
+  flex:1;
+  justify-content: flex-end;
+  font-size:13px;
+}
+
+.refer{
+  padding-left:10px;
+}
+.refer view{
+  font-size:12px;
+  color:darkgrey;
+  text-align: center;
+}

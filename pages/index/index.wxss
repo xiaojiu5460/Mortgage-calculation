@@ -1,0 +1,81 @@
+/**index.wxss**/
+
+
+.classify{
+  display: flex;
+}
+.classify view{
+  display: flex;
+  width: 33.3%;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+}
+.white{
+  background-color:#d4f1f7;
+  color:#24a6c1;
+}
+.grey{
+  color:#145c6b;
+}
+.inform{
+  padding:0 10px;
+  font-size:15px;
+}
+.houstTotal,.first,.loanTotal,.years,.rates,.allowance{
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #D9DADA;
+}
+.allowance{
+  border:none;
+}
+.midLine{
+  height:7px;
+  background-color:#D9DADA;
+  margin:0 -10px
+}
+.houstTotal view:first-child,
+.first view:first-child,
+.loanTotal view:first-child,
+.years view:first-child,
+.rates view:first-child,
+.allowance view:first-child{
+  width: 110px;
+}
+.inform view input{
+  text-align:right;
+  width:80px;
+  background-color: #d4f1f7;
+  color:#186f81;
+  border-radius:3px;
+}
+.houstTotal view:last-child{
+  width:30px;
+  padding-left:10px;
+}
+.houstTotal .total,
+.first view:last-child,
+.loanTotal view:last-child,
+.years view:last-child,
+.rates .pick,
+.allowance .pick{
+  display: flex;
+  flex:1;
+  justify-content: flex-end;
+}
+.rates view:last-child,
+.allowance view:last-child{
+  width:10px;
+  color:#B1B1B3;
+}
+
+.count{
+  padding:0 10px;
+}
+button{
+  background-color: #22AFCB;
+  color:aliceblue;
+  font-size:14px;
+}

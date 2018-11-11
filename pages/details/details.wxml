@@ -1,0 +1,62 @@
+<!--details.wxml-->
+<view class='title'>
+  <text class="{{type=='等额本息'?'white':'grey'}}" bindtap='equalInterest' data-type='等额本息'>等额本息</text>
+  <text class="{{type=='等额本金'?'white':'grey'}}" bindtap='equalPrincipal' data-type='等额本金'>等额本金</text>
+</view>
+<view class='tips' wx:if="{{type=='等额本息'}}">
+  <text>Tips:每月还款金额固定，所还总利息较多</text>
+</view>
+<view class='tips' wx:elif="{{type=='等额本金'}}">
+  <text>Tips:每月还款本金固定，所还总利息较少</text>
+</view>
+<view style='width:auto;height:120px;margin:0 auto' wx:if="{{type=='等额本息'}}">
+  <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec}}" bind:init="echartInit"></ec-canvas>
+</view>
+<view style='width:auto;height:120px;margin:0 auto' wx:elif="{{type=='等额本金'}}">
+  <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec}}" bind:init="echartInit"></ec-canvas>
+</view>
+<view class='inform'>
+  <view class='loanTotal'>
+    <view>贷款总额:</view>
+    <view style='color:#22AFCB'>{{loan}}万元</view>
+  </view>
+  <view class="payInterest" wx:if="{{type=='等额本息'}}">
+    <view>支付利息:</view>
+    <view style='color:#22AFCB'>{{payInterest}}万元</view>
+  </view>
+  <view class="payInterest" wx:elif="{{type=='等额本金'}}">
+    <view>支付利息:</view>
+    <view style='color:#22AFCB'>{{interest}}万元</view>
+  </view>
+  <view class='totalToPay' wx:if="{{type=='等额本息'}}">
+    <view>还款总额:</view>
+    <view style='color:#22AFCB'>{{_total}}万元</view>
+  </view>
+  <view class='totalToPay'  wx:elif="{{type=='等额本金'}}">
+    <view>还款总额:</view>
+    <view style='color:#22AFCB'>{{__total}}万元</view>
+  </view>
+  <view class='rates' wx:if="{{loantype=='商业贷'||loantype=='公积金贷'}}">
+    <view>利率:</view>
+    <view style='color:#22AFCB'>{{rates}}%</view>
+  </view>
+  <view class="eachMonthPay"  wx:if="{{type=='等额本息'}}">
+    <view>平均月供:</view>
+    <view style='color:#22AFCB'>{{eachMonthPay}}元</view>
+  </view>
+  <view class="eachMonthPay"  wx:elif="{{type=='等额本金'}}">
+    <view>平均月供:</view>
+    <view style='color:#22AFCB'>{{average}}元</view>
+  </view>
+  <view class='firstMonth' wx:if="{{type=='等额本息'}}">
+    <view>首月月供:</view>
+    <view style='color:#22AFCB'>{{eachMonthPay}}元</view>
+  </view>
+  <view class='firstMonth' wx:elif="{{type=='等额本金'}}">
+    <view>首月月供:</view>
+    <view style='color:#22AFCB'>{{firstMonthPay}}元</view>
+  </view>
+</view>
+<view class='refer'>
+  <view>以上结果仅供参考 github@xiaojiu5460</view>
+</view>

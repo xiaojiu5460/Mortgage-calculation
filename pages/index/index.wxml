@@ -1,0 +1,121 @@
+<!--index.wxml-->
+<view class="title">
+    <view class='classify'>
+      <view bindtap="businessTap" id="tapTest" data-type="商业贷" class="{{type=='商业贷'?'white':'grey'}}">商业贷</view>
+      <view bindtap="fundTap" id="tapTest" data-type="公积金贷" class="{{type=='公积金贷'?'white':'grey'}}">公积金贷</view>
+      <view bindtap='combinedTap' id="tapTest" data-type="组合贷" class="{{type=='组合贷'?'white':'grey'}}">组合贷</view>
+    </view>
+    <view class='inform'>
+      <view class='houstTotal'  wx:if="{{type=='商业贷'||type=='公积金贷'}}">
+        <view>房款总价:</view>
+        <view class="total">
+          <input bindinput='watchInput' type='number' value="{{total}}"></input>
+        </view>
+         <view style='color:#22AFCB'>万元</view>
+      </view>
+      <view class='first'  wx:if="{{type=='商业贷'||type=='公积金贷'}}">
+        <view>首付比例:</view>
+        <view>
+          <picker name="first" class="picker" mode="selector" value="{{firstIndex}}" range="{{firstPay}}" range-key="{{'name'}}"  bindchange="bindFirstPicker"  >
+            <view class="picker" style='color:#22AFCB'>{{firstPay[firstIndex].name}}({{test1}}万元)</view>
+          </picker>
+          <text style='color:#B1B1B3;width:10px'>＞</text>
+        </view>
+      </view>
+      <view class='loanTotal'  wx:if="{{type=='商业贷'||type=='公积金贷'}}">
+        <view>贷款总额:</view>
+        <view style='color:#22AFCB'>{{test2}}万元</view>
+      </view>
+      <view class='houstTotal' wx:elif="{{type=='组合贷'}}">
+        <view>商业贷款:</view>
+        <view class="total">
+          <input bindinput='businessInput' type='number' value="{{businessLoan}}"></input>
+        </view>
+         <view style='color:#22AFCB'>万元</view>
+      </view>
+      <view class='years' wx:if="{{type=='商业贷'}}">
+        <view>按揭年数:</view>
+        <view>
+          <picker name="years" class="picker" mode="selector" value="{{businessYearIndex}}" range="{{payYears}}" range-key="{{'name'}}"  bindchange="bindBusinessYearsPicker"  >
+            <view class="picker">{{payYears[businessYearIndex].name}}</view>
+          </picker>
+          <text style='color:#B1B1B3;width:10px'>＞</text>
+        </view>
+      </view>
+      <view class='years' wx:if="{{type=='公积金贷'}}">
+        <view>按揭年数:</view>
+        <view>
+          <picker name="years" class="picker" mode="selector" value="{{fundYearIndex}}" range="{{payYears}}" range-key="{{'name'}}"  bindchange="bindFundYearsPicker"  >
+            <view class="picker">{{payYears[fundYearIndex].name}}</view>
+          </picker>
+          <text style='color:#B1B1B3;width:10px'>＞</text>
+        </view>
+      </view>
+      <view class='years' wx:elif="{{type=='组合贷'}}">
+        <view>商贷按揭年数:</view>
+        <view>
+          <picker name="years" class="picker" mode="selector" value="{{businessYearIndex}}" range="{{payYears}}" range-key="{{'name'}}"  bindchange="bindBusinessYearsPicker"  >
+            <view class="picker">{{payYears[businessYearIndex].name}}</view>
+          </picker>
+          <text style='color:#B1B1B3;width:10px'>＞</text>
+        </view>
+      </view>
+      <view class='rates' wx:if="{{type=='商业贷'||type=='组合贷'}}">
+        <view>利率:</view>
+        <view class='pick'>
+          <picker name="businessrates" class="picker" mode="selector" value="{{businessIndex}}"  range="{{businessRates}}" range-key="{{'name'}}"  bindchange="bindBusinessRates"  >
+            <text style='font-size:12px'>{{businessRates[businessIndex].name}}</text>
+          </picker>
+        </view>
+        <view>＞</view>
+      </view>
+      <view class='allowance' wx:if="{{type=='商业贷'||type=='组合贷'}}">
+        <view>基准利率折扣:</view>
+        <view class='pick'>
+          <picker name="allowance" class="picker" mode="selector" value="{{businessAllowanceIndex}}" range="{{allowance}}" range-key="{{'name'}}"  bindchange="bindBusinessAllowance"  >
+            <text style='font-size:12px'>{{allowance[businessAllowanceIndex].name}}</text>
+          </picker>
+        </view>
+        <view>＞</view>
+      </view>
+      
+      <view class="midLine"  wx:if="{{type=='组合贷'}}"></view>
+      <view class='houstTotal'  wx:if="{{type=='组合贷'}}">
+        <view>公积金贷款:</view>
+        <view class="total">
+          <input bindinput='fundInput' type='number' value="{{fundLoan}}"></input>
+        </view>
+         <view style='color:#22AFCB'>万元</view>
+      </view>
+      <view class='years'  wx:if="{{type=='组合贷'}}">
+        <view>公积金按揭年数:</view>
+        <view>
+          <picker name="years" class="picker" mode="selector" value="{{fundYearIndex}}" range="{{payYears}}" range-key="{{'name'}}"  bindchange="bindFundYearsPicker"  >
+            <view class="picker">{{payYears[fundYearIndex].name}}</view>
+          </picker>
+          <text style='color:#B1B1B3;width:10px'>＞</text>
+        </view>
+      </view>
+      <view class='rates' wx:if="{{type=='公积金贷'||type=='组合贷'}}">
+        <view>利率:</view>
+        <view class='pick'>
+          <picker name="rates" class="picker" mode="selector" value="{{fundIndex}}"  range="{{fundRates}}" range-key="{{'name'}}"  bindchange="bindFundRates"  >
+            <text style='font-size:12px'>{{fundRates[fundIndex].name}}</text>
+          </picker>
+        </view>
+        <view>＞</view>
+      </view>
+      <view class='allowance' wx:if="{{type=='公积金贷'||type=='组合贷'}}">
+        <view>基准利率折扣:</view>
+        <view class='pick'>
+          <picker name="allowance" class="picker" mode="selector" value="{{fundAllowanceIndex}}" range="{{allowance}}" range-key="{{'name'}}"  bindchange="bindFundAllowance"  >
+            <text style='font-size:12px'>{{allowance[fundAllowanceIndex].name}}</text>
+          </picker>
+        </view>
+        <view>＞</view>
+      </view> 
+    </view>
+    <view class='count' bindtap='bindViewTap'>
+      <button>开始计算</button>
+    </view>
+</view>

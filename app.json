@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/details/details",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#22AFCB",
+    "navigationBarTitleText": "房产按揭小助手",
+    "navigationBarTextStyle":"white"
+  }
+}
